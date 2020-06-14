@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@MapperScan("org.javaboy.vhr.mapper")
 public class VhrApplication {
 
     public static void main(String[] args) {
