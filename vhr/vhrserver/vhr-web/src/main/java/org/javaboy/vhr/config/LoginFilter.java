@@ -23,14 +23,14 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     SessionRegistry sessionRegistry;
 
     private void checkCode(HttpServletResponse response,String code,String verify_code){
-        if(code==null || verify_code==null || "".equals(code) || verify_code.toLowerCase().equals(code.toLowerCase())){
+        if(code==null || verify_code==null || "".equals(code) || !verify_code.toLowerCase().equals(code.toLowerCase())){
             throw new AuthenticationServiceException("验证码错误");
         }
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        if(request.getMethod().equals("POST")){
+        if(!request.getMethod().equals("POST")){
             throw new AuthenticationServiceException("方法错误"+request.getMethod());
         }
         String verify_code = (String) request.getSession().getAttribute("verify_code");
