@@ -3,10 +3,7 @@ package org.javaboy.vhr.controller;
 import org.javaboy.vhr.model.*;
 import org.javaboy.vhr.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -61,6 +58,28 @@ public class EmpBasicController {
     @GetMapping("/deps")
     public List<Department> getAllDepartment(){
         return departmentService.getAllDepartment();
+    }
+
+
+    @PutMapping("/")
+    public RespBean updateEmp(@RequestBody Employee employee){
+        return employeeService.updateEmp(employee);
+    }
+
+    @GetMapping("/maxWorkID")
+    public RespBean getMaxWorkId(){
+        RespBean result=RespBean.build().setStatus(200)
+                .setObj(String.format("%08d",employeeService.maxWorkID()+1));
+
+        return result;
+    }
+
+    @PostMapping("/")
+    public RespBean addEmp(@RequestBody Employee employee){
+        if(employeeService.addEmp(employee)==1){
+            return RespBean.ok("添加成功");
+        }
+        return RespBean.ok("添加失败");
     }
 
 
