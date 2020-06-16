@@ -2,6 +2,7 @@ package org.javaboy.vhr.service;
 
 import org.javaboy.vhr.mapper.EmployeeMapper;
 import org.javaboy.vhr.model.Employee;
+import org.javaboy.vhr.model.Politicsstatus;
 import org.javaboy.vhr.model.RespPageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class EmployeeService {
     @Autowired
     EmployeeMapper employeeMapper;
 
+
+
     public RespPageBean getEmployeeByPage(Integer page, Integer size, Employee employee, Date[] biginDateScoupe){
         if(page!=null&&size!=null){
             page=(page-1)*size;
@@ -26,4 +29,5 @@ public class EmployeeService {
         rpb.setTotal(total);
         return rpb;
     }
+
 }
