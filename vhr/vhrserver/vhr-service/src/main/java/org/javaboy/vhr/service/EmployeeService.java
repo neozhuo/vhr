@@ -91,5 +91,21 @@ public class EmployeeService {
         return employeeMapper.addEmps(list);
     }
 
+    public RespPageBean getEmployeeByPageWithSalary(Integer page,Integer size){
+        if(page!=null&&size!=null){
+            page=(page-1)*size;
+
+        }
+        List<Employee> list=employeeMapper.getEmployeeByPageWithSalary(page,size);
+        RespPageBean res=new RespPageBean();
+        res.setData(list);
+        res.setTotal(employeeMapper.getTotal(null,null));
+        return res;
+    }
+
+    public Integer updateEmployeeSalaryById(Integer eid,Integer sid){
+        return employeeMapper.updateEmployeeSalaryById(eid,sid);
+    }
+
 
 }
