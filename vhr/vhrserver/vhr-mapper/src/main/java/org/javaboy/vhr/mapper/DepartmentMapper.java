@@ -19,7 +19,7 @@ public interface DepartmentMapper {
 
     List<Department> getAllDepartmentsByParentId(Integer pid);
 
-    void addDep(Department dep);
+    Integer addDep(Department dep);
 
     void deleteDepById(Department dep);
 

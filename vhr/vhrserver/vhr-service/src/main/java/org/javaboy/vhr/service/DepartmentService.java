@@ -16,4 +16,12 @@ public class DepartmentService {
     public List<Department> getAllDepartment(){
         return  departmentMapper.getAllDepartmentsWithOutChildren();
     }
+
+    public Integer addDepartment(Department department){
+        return departmentMapper.addDep(department);
+    }
+
+    public void deleteDepartmentById(Department department){
+        departmentMapper.deleteDepById(department);
+    }
 }
